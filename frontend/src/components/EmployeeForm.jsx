@@ -4,7 +4,7 @@ import { X } from 'lucide-react';
 
 const API_URL = 'http://127.0.0.1:8300/api';
 
-export default function EmployeeForm({ onClose, onSuccess }) {
+export default function EmployeeForm({ onClose, onSuccess, getAxiosConfig }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,7 +15,7 @@ export default function EmployeeForm({ onClose, onSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_URL}/employees/`, formData, { headers: { 'X-Company-ID': '1' } });
+      await axios.post(`${API_URL}/employees/`, formData, getAxiosConfig());
       onSuccess();
     } catch (err) {
       console.error(err);

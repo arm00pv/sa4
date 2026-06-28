@@ -4,7 +4,7 @@ import { X, UploadCloud } from 'lucide-react';
 
 const API_URL = 'http://127.0.0.1:8300/api';
 
-export default function LicenseUpload({ employee, onClose, onSuccess }) {
+export default function LicenseUpload({ employee, onClose, onSuccess, getAxiosConfig }) {
   const [formData, setFormData] = useState({
     title: '',
     expiration_date: '',
@@ -21,7 +21,7 @@ export default function LicenseUpload({ employee, onClose, onSuccess }) {
 
     try {
       await axios.post(`${API_URL}/licenses/`, data, {
-        headers: { 'Content-Type': 'multipart/form-data', 'X-Company-ID': '1' }
+        headers: { 'Content-Type': 'multipart/form-data', ...getAxiosConfig().headers }
       });
       onSuccess();
     } catch (err) {
