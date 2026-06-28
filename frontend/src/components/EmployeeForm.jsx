@@ -15,7 +15,7 @@ export default function EmployeeForm({ onClose, onSuccess }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_URL}/employees/`, formData);
+      await axios.post(`${API_URL}/employees/`, formData, { headers: { 'X-Company-ID': '1' } });
       onSuccess();
     } catch (err) {
       console.error(err);

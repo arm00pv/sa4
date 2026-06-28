@@ -21,7 +21,7 @@ export default function LicenseUpload({ employee, onClose, onSuccess }) {
 
     try {
       await axios.post(`${API_URL}/licenses/`, data, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+        headers: { 'Content-Type': 'multipart/form-data', 'X-Company-ID': '1' }
       });
       onSuccess();
     } catch (err) {

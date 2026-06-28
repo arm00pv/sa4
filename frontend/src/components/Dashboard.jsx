@@ -15,7 +15,7 @@ export default function Dashboard() {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get(`${API_URL}/employees/`);
+      const response = await axios.get(`${API_URL}/employees/`, { headers: { 'X-Company-ID': '1' } });
       setEmployees(response.data);
     } catch (err) {
       console.error("Failed to fetch employees", err);
